@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="bg-primary p-3 text-white col-md-3">Delivery Status</h1>
+ 
+
+    {% for i in form %}
+        <h4>Prepared To: {{ i.meal_preparation }} </h4>
+        <p>
+                Dlivery Person: {{ i.delivery_person }}  
+                    <a href="{% url 'meal_preparation_update_' i.id %}" style="text-decoration: none;" class="btn btn-dark">
+                        Edit
+                    </a>
+                    <a href="{% url 'meal_preparation_delete_' i.id %}" style="text-decoration: none;" class="btn btn-dark">
+                        Delete
+                    </a>
+
+        </p>
+        <p><b>Status:  </b> <i>{{ i.status }}</i></p>
+        <p>Delivered At: <b>{{ i.delivered_at }}</b></p>
+        <p>Comments: <i> {{ i.notes }} </i></p>
+
+    {% endfor %}
+    
+</div>
+        
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Patient Details</h1>
+<h4>Name: {{ patient_detail.name }}</h4>
+<p>Room Number: {{ patient_detail.room_number }} </p>
+<p>Floor Number:  {{ patient_detail.floor_number }} </p>
+<p>Bed Number: {{ patient_detail.bed_number }} </p>
+<p>Diseases: {{ patient_detail.diseases }} </p>
+
+{% endblock %}

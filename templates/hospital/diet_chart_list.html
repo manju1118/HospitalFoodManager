@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Diet Charts</h1>
+<a href="{% url 'dietchart_create_' %}" class="btn btn-primary">Create Diet Chart</a>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Patient Name</th>
+            <th>Morning Meal</th>
+            <th>Evening Meal</th>
+            <th>Night Meal</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for diet_charts in dietchart %}
+        <tr>
+            <td>
+                <a href="{ url 'dietchart_detail' diet_charts.id  }" style="text-decoration: none;">{{ diet_charts.patient.name }}</a>
+            </td>
+            <td>{{ diet_charts.morning_meal }}</td>
+            <td>{{ diet_charts.evening_meal }}</td>
+            <td>{{ diet_charts.night_meal }}</td>
+            <td>
+                <a href="{% url 'dietchart_update' diet_charts.id %}" class="btn btn-info btn-sm">Edit</a>
+                <a href="{% url 'dietchart_delete' diet_charts.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

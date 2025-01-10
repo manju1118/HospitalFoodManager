@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+        <div class="container">
+            <h4 class="text-center"> 
+               Add Pantry Staff
+            </h4>
+            <form method="post">
+                {% csrf_token %}
+
+                {{ form }}
+                <input type="submit" value="Add Pantry Staff" class="btn btn-primary">
+            </form>
+        </div>
+
+
+
+{% endblock %}

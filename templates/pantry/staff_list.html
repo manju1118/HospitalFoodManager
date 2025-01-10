@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Pantry Staff List</h1>
+<a href="{% url 'pantry_staff_create_' %}" class="btn btn-primary">Add New Staff</a>
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for staff in form %}
+        <tr>
+            <td>
+                <a href="{% url 'get_pantry_detail' staff.id %}" style="text-decoration: none;"> {{ staff.name }}</a>
+            </td>
+            <td>{{ staff.contact_info }}</td>
+            <td>{{ staff.location }}</td>
+            <td>
+                <a href="{% url 'staff_update' staff.id  %}" class="btn btn-info btn-sm">Edit</a>
+                <a href="{% url 'staff_delete' staff.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

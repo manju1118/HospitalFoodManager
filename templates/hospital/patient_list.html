@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<h1>Patients List</h1>
+<a href="{% url 'patient_create_' %}" class="btn btn-primary">Add New Patient</a>
+<br><br>
+<div class="d-flex align-items-center justify-content-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Diseases</th>
+                <th>Allergies</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patients in patient %}
+            <tr>
+                <td>
+                    <a href="{% url 'patient_detail' patients.id %}" style="text-decoration: none;">{{ patients.name }}</a>
+                </td>
+                <td>{{ patients.age }}</td>
+                <td>{{ patients.gender }}</td>
+                <td>{{ patients.diseases }}</td>
+                <td>{{ patients.allergies }}</td>
+                <td>
+                    <a href="{% url 'patient_update' patients.id %}" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{% url 'patient_delete' patients.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+
+    <h4><i>You're Not Authorized</i></h4> To Continue <a style="text-decoration: none;" href="{% url 'login' %}">Login Here</a>
+{% endif %}
+
+{% endblock %}

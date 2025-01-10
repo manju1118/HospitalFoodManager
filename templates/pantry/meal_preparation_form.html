@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{% if meal_preparation %}Edit{% else %}Create{% endif %} Meal Preparation</h1>
+<form method="post" action="{% if meal_preparation %}{% url 'meal_preparation_detail' meal_preparation.pk %}{% else %}{% url 'meal_preparation_list_create' %}{% endif %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="meal_details" class="form-label">Meal Details</label>
+        <input type="text" class="form-control" id="meal_details" name="meal_details" value="{{ meal_preparation.meal_details if meal_preparation }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="assigned_staff" class="form-label">Assigned Staff</label>
+        <select class="form-select" id="assigned_staff" name="assigned_staff">
+            {% for staff in pantry_staff %}
+            <option value="{{ staff.id }}" {% if meal_preparation.assigned_staff == staff.id %}selected{% endif %}>{{ staff.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">{% if meal_preparation %}Update{% else %}Create{% endif %} Meal Preparation</button>
+</form>
+{% endblock %}

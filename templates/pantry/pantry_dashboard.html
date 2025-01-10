@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Pantry Staff Dashboard</h1>
+
+<div class="row">
+    <!-- Staff -->
+    <div class="col-md-6">
+        <h2>Pantry Staff</h2>
+        <a href="/pantry/staff/" class="btn btn-primary">Manage Staff</a>
+    </div>
+
+    <!-- Meal Preparations -->
+    <div class="col-md-6">
+        <h2>Meal Preparations</h2>
+        <a href="/pantry/meal-preparations/" class="btn btn-primary">Manage Meal Preparations</a>
+    </div>
+</div>
+{% endblock %}
